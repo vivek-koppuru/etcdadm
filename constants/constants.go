@@ -34,6 +34,7 @@ const (
 	EtcdctlEnvFile   = "/etc/etcd/etcdctl.env"
 
 	DefaultDataDir = "/var/lib/etcd"
+	DefaultPodSpecDir = "/etc/kubernetes/manifests"
 
 	DefaultLoopbackHost = "127.0.0.1"
 	DefaultPeerPort     = 2380
