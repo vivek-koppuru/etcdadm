@@ -134,6 +134,8 @@ ETCD_CERT_FILE={{ .CertFile }}
 ETCD_KEY_FILE={{ .KeyFile }}
 ETCD_TRUSTED_CA_FILE={{ .TrustedCAFile }}
 
+ETCD_CIPHER_SUITES={{ StringsJoin .CipherSuites "," }}
+
 # Other
 ETCD_DATA_DIR={{ .DataDir }}
 ETCD_STRICT_RECONFIG_CHECK=true

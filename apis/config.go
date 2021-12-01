@@ -95,6 +95,10 @@ type EtcdAdmConfig struct {
 	InitSystem InitSystem
 
 	Endpoint string
+
+	// CipherSuites is a list of supported TLS cipher suites, mapping to the --cipher-suites flag.
+	// Default is empty, which means that they will be auto-populated by Go.
+	CipherSuites []string
 }
 
 // InitSystem represents the different types of init system

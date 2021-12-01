@@ -52,6 +52,7 @@ func init() {
 	initCmd.PersistentFlags().StringVar(&etcdAdmConfig.ImageRepository, "image-repository", constants.DefaultImageRepository, "image repository when using kubelet init system")
 	initCmd.PersistentFlags().StringVar(&etcdAdmConfig.DataDir, "data-dir", constants.DefaultDataDir, "etcd data directory")
 	initCmd.PersistentFlags().StringVar(&etcdAdmConfig.PodSpecDir, "podspec-dir", constants.DefaultPodSpecDir, "kubelet podspec directory")
+	initCmd.PersistentFlags().StringSliceVar(&etcdAdmConfig.CipherSuites, "cipher-suites", etcdAdmConfig.CipherSuites, "optional list of supported TLS cipher suites between server/client and peers, can be multiple comma separated TLS cipher suites")
 
 	runner.registerPhasesAsSubcommands(initCmd)
 }

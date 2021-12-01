@@ -51,6 +51,7 @@ func init() {
 	joinCmd.PersistentFlags().StringVar(&etcdAdmConfig.ImageRepository, "image-repository", constants.DefaultImageRepository, "image repository when using kubelet init system")
 	joinCmd.PersistentFlags().StringVar(&etcdAdmConfig.DataDir, "data-dir", constants.DefaultDataDir, "etcd data directory")
 	joinCmd.PersistentFlags().StringVar(&etcdAdmConfig.PodSpecDir, "podspec-dir", constants.DefaultPodSpecDir, "kubelet podspec directory")
+	joinCmd.PersistentFlags().StringSliceVar(&etcdAdmConfig.CipherSuites, "cipher-suites", etcdAdmConfig.CipherSuites, "optional list of supported TLS cipher suites between server/client and peers, can be multiple comma separated TLS cipher suites")
 
 	runner.registerPhasesAsSubcommands(joinCmd)
 }

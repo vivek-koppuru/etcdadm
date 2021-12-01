@@ -98,7 +98,8 @@ func DiffVersion(cfg *apis.EtcdAdmConfig) (string, error) {
 }
 
 func desiredEnvironment(cfg *apis.EtcdAdmConfig) (map[string]string, error) {
-	t := template.Must(template.New("environment").Parse(constants.EnvFileTemplate))
+	t := template.Must(template.New("environment").Funcs(template.FuncMap{"StringsJoin": strings.Join}).
+		Parse(constants.EnvFileTemplate))
 	var b bytes.Buffer
 	t.Execute(&b, cfg)
 	return makeEnvironment(&b)

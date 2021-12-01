@@ -22,6 +22,7 @@ import (
 	"html/template"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"sigs.k8s.io/etcdadm/apis"
 	"sigs.k8s.io/etcdadm/constants"
@@ -54,7 +55,8 @@ func WriteEnvironmentFile(cfg *apis.EtcdAdmConfig) error {
 
 // BuildEnvironment returns the environment variables corresponding to the desired configuration
 func BuildEnvironment(cfg *apis.EtcdAdmConfig) ([]byte, error) {
-	t := template.Must(template.New("environment").Parse(constants.EnvFileTemplate))
+	t := template.Must(template.New("environment").Funcs(template.FuncMap{"StringsJoin": strings.Join}).
+		Parse(constants.EnvFileTemplate))
 
 	var b bytes.Buffer
 
